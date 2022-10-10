@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const baseUrl = "http://192.168.0.104:3000";
+const baseUrl = "http://192.168.1.104:3000";
 
 app.use(express.json());
 
@@ -21,7 +21,7 @@ app.get("/get-endpoints/:appKey", (req, res) => {
         { id: 1, name: "cdn5", weight: 30, price: 80, url: `${baseUrl}/fifth` },
       ],
     });
-  }else if(req.params.appKey == 'key2'){
+  }else if(req.params.appKey == 'key1'){
     res.json({
       reportingURL: `${baseUrl}/sendreports`,
       servers: [
@@ -32,7 +32,7 @@ app.get("/get-endpoints/:appKey", (req, res) => {
     });
   }
   else{
-    res.status(401).json('invalid app key')
+    res.status(400).json('invalid app key')
   }
 
 });
